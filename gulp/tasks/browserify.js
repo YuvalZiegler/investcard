@@ -16,6 +16,9 @@ var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var config       = require('../config').browserify;
+var vinylTransform = require('vinyl-transform');
+var exorcist = require('exorcist');
+
 require('reactify');
 require('browserify-shim');
 require('stripify');
@@ -43,17 +46,21 @@ gulp.task('browserify', function(callback) {
     var bundle = function() {
       // Log when bundling starts
       bundleLogger.start(bundleConfig.outputName);
-      bundler.transform('reactify').transform('envify').transform('browserify-shim')
+      bundler.transform('reactify')
+      .transform('envify')
+      .transform('browserify-shim')
+      
 
       if ("development" !== process.env.NODE_ENV){
-        bundler.transform('stripify')
+        bundler.transform('stripify');
         bundler.transform({
           global:true,
           dead_code:true,
           mangle:true,
           evaluate:true,
           join_vars:true
-        }, 'uglifyify')
+        }, 'uglifyify');
+         
       }
       return bundler
         .bundle()
@@ -63,6 +70,7 @@ gulp.task('browserify', function(callback) {
         // stream gulp compatible. Specify the
         // desired output filename here.
         .pipe(source(bundleConfig.outputName))
+        .pipe(vinylTransform(function () { return exorcist('./build/script.map'); }))
         // Specify the output destination
         .pipe(gulp.dest(bundleConfig.dest))
         .on('end', reportFinished);

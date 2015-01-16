@@ -5,6 +5,7 @@ var ActionTypes = require('../constants/AppConstants').ActionTypes;
 
 var InvestmentCardActions = {
   initialize:function(payload){
+
     AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_INITIAL_STATE,
       payload: payload

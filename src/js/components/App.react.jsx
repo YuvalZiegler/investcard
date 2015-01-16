@@ -3,7 +3,7 @@
 var InvestmentCard = require('./InvestmentCard.react.jsx');
 var InvestmentCardStore = require('../stores/InvestmentCardStore');
 var Debug = require('./Debug.react.jsx');
-var React = require('react/addons');
+var React = require('react');
 
 function getStateFromStores() {
   return InvestmentCardStore.getState();
@@ -16,16 +16,17 @@ var App = React.createClass({
     },
 
     getInitialState:function(){
-        return {
-
-        }
+        return getStateFromStores();
     },
 
     render: function() {
-        
-        return ( 
+
+        var cards = this.state && this.state.cards || [{}];
+
+        return (
           <div id="application">
             {this.getDebugView()}
+            <InvestmentCard {...cards[0]}/>
           </div>
         )
     },
@@ -35,9 +36,7 @@ var App = React.createClass({
     },
      
     _onChange: function () {
-        console.log("‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡");
         console.log("~~ App ::  _onChange ");
-        console.log("‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡");
         this.setState( getStateFromStores() );
     }
 

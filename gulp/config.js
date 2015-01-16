@@ -12,7 +12,8 @@ module.exports = {
       // for sass sourcemap linking
       baseDir: [dest, src, test]
     },
-    browser: "google chrome canary",
+    logConnections: false,
+    browser: ["google chrome canary", "firefox"],
     files: [
       dest + "/**",
       test + "/**",

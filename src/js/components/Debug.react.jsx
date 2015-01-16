@@ -1,4 +1,4 @@
-var React = require('react/addons');
+var React = require('react');
 
 if ("development" == process.env.NODE_ENV && window){
   window.React = React;

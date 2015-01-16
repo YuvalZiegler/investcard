@@ -12,14 +12,14 @@ var AppDispatcher = objectAssign(new Dispatcher(), {
    * type and additional data coming from the server.
    */
   handleServerAction: function(action) {
-    
+
     var payload = {
       source: ActionSources.SERVER_ACTION,
       action: action
     };
-    console.log("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+
     console.log("❉  DISPATCHER :: " + payload.source + " :: "  + payload.action.type);
-    console.log("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+
     this.dispatch(payload);
     
   },

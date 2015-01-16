@@ -1,9 +1,5 @@
-
-@import "../../node_modules/material-ui-sass/material-ui";
-@import "./core/vars";
-@import "./core/mixins";
-@import "./core/utilities";
-
+@import "core/vars";
+@import "material-ui";
 
 * {
     box-sizing: border-box;
@@ -14,8 +10,8 @@ html, body{
     padding:0;
 }
 body{
-    background:$light_gray;
-    color:$arsenic;
+    background:$grey-100;
+    color:$blue-grey-900;
     font-family: 'Roboto', sans-serif;
 }
 

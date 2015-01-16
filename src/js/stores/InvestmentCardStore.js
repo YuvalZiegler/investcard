@@ -30,16 +30,15 @@ var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
 
 InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
   
-  console.log("❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
+
   console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
-  console.log("❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤");
-  
+
   var action = payload.action;
   
   switch(action.type) {
     case ActionTypes.RECEIVE_INITIAL_STATE:
     case ActionTypes.UPDATE_STATE:
-      _state = objectAssign( _state, action.payload );
+      _state =   JSON.parse(action.payload);
       InvestmentCardStore.emitChange();
       break;
 
