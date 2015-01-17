@@ -16,6 +16,12 @@ var InvestmentCardActions = {
       type: ActionTypes.UPDATE_STATE,
       payload: payload
     });
+  },
+  addFunds: function(amount) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.ADD_FUNDS,
+      payload:amount
+    });
   }
 
 };

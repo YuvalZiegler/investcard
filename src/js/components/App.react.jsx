@@ -6,6 +6,7 @@ var Debug = require('./Debug.react.jsx');
 var React = require('react');
 
 function getStateFromStores() {
+
   return InvestmentCardStore.getState();
 }
 
@@ -21,12 +22,12 @@ var App = React.createClass({
 
     render: function() {
 
-        var cards = this.state && this.state.cards || [{}];
+        var card = this.state;
 
         return (
           <div id="application">
             {this.getDebugView()}
-            <InvestmentCard {...cards[0]}/>
+            <InvestmentCard {...card}/>
           </div>
         )
     },
@@ -36,8 +37,9 @@ var App = React.createClass({
     },
      
     _onChange: function () {
-        console.log("~~ App ::  _onChange ");
-        this.setState( getStateFromStores() );
+        var state =  getStateFromStores();
+        console.log("~~ App ::  _onChange ", state );
+        this.setState(state );
     }
 
 });

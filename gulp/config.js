@@ -13,7 +13,7 @@ module.exports = {
       baseDir: [dest, src, test]
     },
     logConnections: false,
-    browser: ["google chrome canary", "firefox"],
+    browser: ["google chrome canary"],
     files: [
       dest + "/**",
       test + "/**",

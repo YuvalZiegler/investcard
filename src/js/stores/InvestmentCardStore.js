@@ -17,14 +17,21 @@ var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
     this.on(CHANGE_EVENT, callback);
   },
 
-  getVal: function(key) {
+  getValue: function(key) {
     return _state[key];
   },
 
   getState: function() {
     return _state;
+  },
+  addFunds:function(amount){
+    _state.currentFunds= parseInt(_state.currentFunds) + parseInt(amount);
+    return this;
+  },
+  setState:function(state){
+    _state = state;
+    return this;
   }
-
 });
 
 
@@ -34,14 +41,14 @@ InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
   console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
 
   var action = payload.action;
-  
+  // handles both server and view actions since we don't can be split to consider source when needed.
   switch(action.type) {
     case ActionTypes.RECEIVE_INITIAL_STATE:
-    case ActionTypes.UPDATE_STATE:
-      _state =   JSON.parse(action.payload);
-      InvestmentCardStore.emitChange();
+      InvestmentCardStore.setState(JSON.parse(action.payload)).emitChange();
       break;
-
+    case ActionTypes.ADD_FUNDS:
+      InvestmentCardStore.addFunds(action.payload).emitChange();
+      break;
     default:
       // do nothing
   }
