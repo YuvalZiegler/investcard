@@ -9,6 +9,7 @@ module.exports = {
   ActionTypes: keyMirror({
     RECEIVE_INITIAL_STATE: null,
     UPDATE_STATE:null,
+    UPDATE_STATUS:null,
     ADD_FUNDS:null
   }),
 
@@ -17,7 +18,7 @@ module.exports = {
     VIEW_ACTION: null
   }),
 
-  CardStates: keyMirror({
+  CardStatus: keyMirror({
     PENDING:null, OPEN:null, INVESTED:null, FUNDED:null
   })
 

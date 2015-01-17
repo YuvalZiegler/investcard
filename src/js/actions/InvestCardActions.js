@@ -5,22 +5,27 @@ var ActionTypes = require('../constants/AppConstants').ActionTypes;
 
 var InvestmentCardActions = {
   initialize:function(payload){
-
     AppDispatcher.handleServerAction({
       type: ActionTypes.RECEIVE_INITIAL_STATE,
       payload: payload
     });
   },
   updateState: function (payload) {
-    AppDispatcher.handleViewAction({
+    AppDispatcher.handleServerAction({
       type: ActionTypes.UPDATE_STATE,
       payload: payload
     });
   },
-  addFunds: function(amount) {
+  updateStatus: function(payload) {
+    AppDispatcher.handleViewAction({
+      type: ActionTypes.UPDATE_STATUS,
+      payload: payload
+    });
+  },
+  addFunds: function(payload) {
     AppDispatcher.handleViewAction({
       type: ActionTypes.ADD_FUNDS,
-      payload:amount
+      payload:payload
     });
   }
 

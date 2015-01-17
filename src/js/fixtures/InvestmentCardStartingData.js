@@ -8,8 +8,10 @@ var data = {
       companyLogo: "https://placeimg.com/300/225/tech",
       fundingGoal:100000,
       fundingStart:"24 hours from now",
+      investors:11,
+      currentUserContribution:0,
       currentFunds:40000,
-      state:"OPEN"
+      status:"OPEN"
 };
 
 module.exports = data;

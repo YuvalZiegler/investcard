@@ -1,10 +1,12 @@
 'use strict';
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var objectAssign = require('react/lib/Object.assign');
-var CHANGE_EVENT = 'change';
-var ActionTypes = require('../constants/AppConstants').ActionTypes;
+var EventEmitter  = require('events').EventEmitter;
+var objectAssign  = require('react/lib/Object.assign');
+var CHANGE_EVENT  = 'change';
+var Actions       = require('../constants/AppConstants');
+var ActionTypes   = Actions.ActionTypes;
+var CardStatus    = Actions.CardStatus;
 var _state = {};
 
 var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
@@ -26,6 +28,17 @@ var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
   },
   addFunds:function(amount){
     _state.currentFunds= parseInt(_state.currentFunds) + parseInt(amount);
+    _state.currentUserContribution= parseInt(amount);
+    // Set the status of the investment
+    _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.INVESTED);
+    return this;
+  },
+  addInvestor:function(){
+    _state.investors++;
+    return this;
+  },
+  setStatus:function(status){
+    _state.status = status;
     return this;
   },
   setState:function(state){
@@ -47,7 +60,10 @@ InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
       InvestmentCardStore.setState(JSON.parse(action.payload)).emitChange();
       break;
     case ActionTypes.ADD_FUNDS:
-      InvestmentCardStore.addFunds(action.payload).emitChange();
+      InvestmentCardStore
+          .addFunds(action.payload)
+          .addInvestor()
+          .emitChange();
       break;
     default:
       // do nothing

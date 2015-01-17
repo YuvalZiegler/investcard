@@ -38,8 +38,8 @@ var App = React.createClass({
      
     _onChange: function () {
         var state =  getStateFromStores();
-        console.log("~~ App ::  _onChange ", state );
-        this.setState(state );
+        console.log("☯ App         :: STATE UPDATE" );
+        this.setState(state);
     }
 
 });
