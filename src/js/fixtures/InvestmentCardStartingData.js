@@ -7,11 +7,12 @@ var data = {
       companyDescription: "The Acme Corporation is a fictional corporation featuring outlandish products that fail or backfire catastrophically at the worst possible times.",
       companyLogo: "https://placeimg.com/300/225/tech",
       fundingGoal:100000,
-      fundingStart:"24 hours from now",
+      fundingStart: "Jan 16, 2015",
+      timeFromNow:"about 24 hours from now",
       investors:11,
       currentUserContribution:0,
       currentFunds:40000,
-      status:"OPEN"
+      status:"PENDING"
 };
 
 module.exports = data;

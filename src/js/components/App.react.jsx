@@ -1,47 +1,26 @@
 'use strict';
 
-var InvestmentCard = require('./InvestmentCard.react.jsx');
-var InvestmentCardStore = require('../stores/InvestmentCardStore');
-var Debug = require('./Debug.react.jsx');
-var React = require('react');
 
-function getStateFromStores() {
+var Cards         = require('./Cards.react.jsx');
+var Notifications = require('./Notifications.react.jsx');
+var React         = require('react');
+var injectTapEventPlugin = require("react-tap-event-plugin");
 
-  return InvestmentCardStore.getState();
-}
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
 
 var App = React.createClass({
-
-    getDebugView:function(){
-        return process.env.NODE_ENV === "development" ? <Debug/> : null;
-    },
-
-    getInitialState:function(){
-        return getStateFromStores();
-    },
-
     render: function() {
-
-        var card = this.state;
-
         return (
           <div id="application">
-            {this.getDebugView()}
-            <InvestmentCard {...card}/>
+            <Cards/>
+            <Notifications/>
           </div>
         )
-    },
-
-    componentDidMount: function () {
-        InvestmentCardStore.addChangeListener(this._onChange);
-    },
-     
-    _onChange: function () {
-        var state =  getStateFromStores();
-        console.log("☯ App         :: STATE UPDATE" );
-        this.setState(state);
     }
-
 });
 
 module.exports = App;

@@ -10,7 +10,8 @@ module.exports = {
     RECEIVE_INITIAL_STATE: null,
     UPDATE_STATE:null,
     UPDATE_STATUS:null,
-    ADD_FUNDS:null
+    ADD_FUNDS:null,
+    SHOW_MESSAGE:null
   }),
 
   ActionSources: keyMirror({

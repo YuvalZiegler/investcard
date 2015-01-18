@@ -1,5 +1,6 @@
 var React = require('react');
 var accounting = require('accounting');
+var actions = require('../../actions/NotificationActions');
 
 var ProgressBar = React.createClass({
   getDefaultProps:function(){
@@ -10,6 +11,7 @@ var ProgressBar = React.createClass({
       investors:0
     }
   },
+
   render:function(){
 
     // user contribution is rendered behind the complete style so we need to adjust the width accordingly
@@ -22,7 +24,10 @@ var ProgressBar = React.createClass({
             <div className="invest-card-progress-bar-details-complete">
               {this.props.complete + "%"}
               <br/>
-              funded by {this.props.investors} investors
+              funded by &nbsp;
+              <a className="view-investors" onClick={ actions.showMessage.bind(this, "feature not implemented: will show investors list") }>
+                {this.props.investors} investors
+              </a>
             </div>
           </div>
           <div className="invest-card-progress-bar-details-goal">

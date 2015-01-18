@@ -33,9 +33,9 @@ var AppDispatcher = objectAssign(new Dispatcher(), {
       source:  ActionSources.VIEW_ACTION,
       action: action
     };
-    console.log("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+
     console.log("※  DISPATCHER :: " + payload.source + " :: "  + payload.action.type);
-    console.log("※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※");
+
     this.dispatch(payload);
     
   }

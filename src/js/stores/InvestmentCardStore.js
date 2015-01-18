@@ -9,7 +9,7 @@ var ActionTypes   = Actions.ActionTypes;
 var CardStatus    = Actions.CardStatus;
 var _state = {};
 
-var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
+var InvestmentCardStore = objectAssign({} ,EventEmitter.prototype, {
 
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -49,27 +49,27 @@ var InvestmentCardStore = objectAssign( EventEmitter.prototype, {
 
 
 InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
-  
-
-  console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
 
   var action = payload.action;
   // handles both server and view actions since we don't can be split to consider source when needed.
   switch(action.type) {
+
     case ActionTypes.RECEIVE_INITIAL_STATE:
+      console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
       InvestmentCardStore.setState(JSON.parse(action.payload)).emitChange();
       break;
+
     case ActionTypes.ADD_FUNDS:
+      console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
       InvestmentCardStore
           .addFunds(action.payload)
           .addInvestor()
           .emitChange();
       break;
+
     default:
       // do nothing
   }
-  
-  InvestmentCardStore.emitChange();
 
 });
 
