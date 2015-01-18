@@ -1,7 +1,7 @@
 'use strict';
 
-
 var Cards         = require('./Cards.react.jsx');
+var Controls         = require('./Controls.react.jsx');
 var Notifications = require('./Notifications.react.jsx');
 var React         = require('react');
 var injectTapEventPlugin = require("react-tap-event-plugin");
@@ -17,6 +17,7 @@ var App = React.createClass({
         return (
           <div id="application">
             <Cards/>
+            <Controls/>
             <Notifications/>
           </div>
         )

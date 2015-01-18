@@ -1,4 +1,4 @@
-$InvestmentCardstatefulAreaHeight: 136px;
+$InvestmentCardStatefulAreaHeight: 136px;
 .investment-card{
   float: left;
   width:300px;
@@ -35,7 +35,7 @@ $InvestmentCardstatefulAreaHeight: 136px;
   float: left;
   margin: 10px 0;
   padding:10px;
-  height: $InvestmentCardstatefulAreaHeight;
+  height: $InvestmentCardStatefulAreaHeight;
   
   .mui-input {
     margin-bottom: 32px;
@@ -74,7 +74,7 @@ $InvestmentCardstatefulAreaHeight: 136px;
 
 .investment-card-pending-state{
 
-  height:($InvestmentCardstatefulAreaHeight + 80);
+  height:($InvestmentCardStatefulAreaHeight + 80);
   margin: 10px 0;
   text-align: center;
   p{ margin-bottom: 0;}
@@ -89,12 +89,26 @@ $InvestmentCardstatefulAreaHeight: 136px;
   opacity: 0;
   transition: opacity, 1s;
   float: left;
-  height: $InvestmentCardstatefulAreaHeight;
+  height: $InvestmentCardStatefulAreaHeight;
   margin: 10px 0;
   width:100%;
   text-align: center;
   h3{ margin-bottom:0;}
   h4{color:$accent-1-color;}
+}
+.investment-card-funded-state{
+  opacity: 0;
+  transition: opacity, 1s;
+  float: left;
+  height: $InvestmentCardStatefulAreaHeight;
+  margin: 10px 0;
+  width:100%;
+  text-align: center;
+  p{ margin-bottom: 0;}
+  h3{ margin-bottom:0;
+    color:$accent-3-color;
+  }
+  h4{color:$accent-1-color; padding-top: 0}
 }
 
 

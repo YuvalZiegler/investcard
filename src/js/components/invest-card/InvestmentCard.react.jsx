@@ -4,7 +4,6 @@ var ProgressBar = require('./ProgressBar.react.jsx');
 var CardStatus = require('../../constants/AppConstants').CardStatus;
 var accounting = require('accounting');
 var actions = require('../../actions/NotificationActions');
-
 var IconButton = require('material-ui').IconButton;
 
 var InvestmentCard = React.createClass({
@@ -55,7 +54,13 @@ var InvestmentCard = React.createClass({
       )
   },
   renderFundedState:function(){
-    return (<div>FUNDED</div>);
+    return (<div className="investment-card-funded-state fade-in">
+      <p className="mui-font-style-body-2">funding goal reached!</p>
+      <h3 className="mui-font-style-display-2">{accounting.formatMoney(this.props.fundingGoal,{precision:0})}</h3>
+      <p className="mui-font-style-caption">You Invested:</p>
+      <h4 className="mui-font-style-display-1">{accounting.formatMoney(this.props.currentUserContribution,{precision:0})}</h4>
+
+    </div>);
   },
   renderProgressBar:function(){
 

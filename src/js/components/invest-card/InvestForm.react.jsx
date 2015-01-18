@@ -45,7 +45,7 @@ var InvestForm = React.createClass({
   render:function(){
 
     return(
-        <form className="invest-form" onSubmit={this._handleSubmit} >
+        <form className="invest-form fade-in" onSubmit={this._handleSubmit} >
           <Input ref="investInput"
                  type="text"
                  name="investInput"

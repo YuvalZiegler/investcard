@@ -1,0 +1,25 @@
+.controls{
+  float: left;
+  width:500px;
+  margin:20px;
+  box-shadow: 2px 3px 10px rgba($blue-grey-900,0.1);
+
+  header{
+    float:left;
+    width:100%;
+    padding:13px;
+    background: $blue-grey-800;
+    h1{
+      color:$grey-50;
+      padding:0;
+      margin:0;
+    }
+  }
+  section{
+    float:left;
+    background: $grey-50;
+    width:100%;
+    padding: 13px;
+  }
+
+}

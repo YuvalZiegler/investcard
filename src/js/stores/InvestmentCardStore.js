@@ -66,6 +66,11 @@ InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
           .addInvestor()
           .emitChange();
       break;
+    case ActionTypes.UPDATE_STATUS:
+        InvestmentCardStore
+          .setStatus(action.payload)
+          .emitChange();
+      break;
 
     default:
       // do nothing
