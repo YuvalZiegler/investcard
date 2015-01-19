@@ -9,9 +9,9 @@ var data = {
       fundingGoal:100000,
       fundingStart: "Jan 16, 2015",
       timeFromNow:"about 24 hours from now",
-      investors:0,
+      investors:15,
       currentUserContribution:0,
-      currentFunds:0,
+      currentFunds:40000,
       status:"PENDING"
 };
 

@@ -28,7 +28,7 @@ var InvestmentCard = React.createClass({
   renderPendingState:function(){
     return (
 
-        <div className="investment-card-pending-state">
+        <div className="investment-card-pending-state fade-in">
           <p className="mui-font-style-body-2">funding goal</p>
           <h3 className="mui-font-style-display-1">{accounting.formatMoney(this.props.fundingGoal,{precision:0})}</h3>
           <h4 className="mui-font-style-title">Starts {this.props.fundingStart}</h4>
@@ -81,7 +81,7 @@ var InvestmentCard = React.createClass({
     var p = this.props;
 
     return (
-      <div className={"investment-card fade-in " + p.status} key={p.id}>
+      <div className={"investment-card " + p.status} key={p.id}>
         <div className="investment-card_image-wrapper">
             <img src={p.companyLogo}/>
         </div>

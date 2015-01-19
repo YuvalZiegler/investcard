@@ -20,7 +20,10 @@ var Controls = React.createClass({
             <Button label="OPEN" secondary={true} onClick={function(){actions.updateStatus(status.OPEN)}} />
 
           </section>
-
+          <section>
+            <p className="mui-font-style-title">Simulate transaction</p>
+            <Button label="Add investment" secondary={true} onClick={function(){actions.simulateServerInvestment(5000)}} />
+          </section>
         </div>
     );
   }

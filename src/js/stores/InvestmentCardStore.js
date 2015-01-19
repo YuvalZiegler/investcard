@@ -5,6 +5,7 @@ var EventEmitter  = require('events').EventEmitter;
 var objectAssign  = require('react/lib/Object.assign');
 var CHANGE_EVENT  = 'change';
 var Actions       = require('../constants/AppConstants');
+var ActionsSources= Actions.ActionSources;
 var ActionTypes   = Actions.ActionTypes;
 var CardStatus    = Actions.CardStatus;
 var _state = {};
@@ -14,23 +15,25 @@ var InvestmentCardStore = objectAssign({} ,EventEmitter.prototype, {
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
-
   addChangeListener: function(callback) {
     this.on(CHANGE_EVENT, callback);
   },
-
   getValue: function(key) {
     return _state[key];
   },
-
   getState: function() {
     return _state;
   },
-  addFunds:function(amount){
-    _state.currentFunds= parseInt(_state.currentFunds) + parseInt(amount);
-    _state.currentUserContribution= parseInt(amount);
-    // Set the status of the investment
-    _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.INVESTED);
+  addFunds:function(amount, source){
+    _state.currentFunds = Math.min(parseInt(_state.currentFunds) + parseInt(amount), _state.fundingGoal);
+    if (source === ActionsSources.SERVER_ACTION){
+      _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.OPEN)
+    } else {
+      _state.currentUserContribution= parseInt(amount);
+      // Set the status of the investment
+      _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.INVESTED);
+    }
+
     return this;
   },
   addInvestor:function(){
@@ -62,11 +65,12 @@ InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
     case ActionTypes.ADD_FUNDS:
       console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
       InvestmentCardStore
-          .addFunds(action.payload)
+          .addFunds(action.payload, payload.source)
           .addInvestor()
           .emitChange();
       break;
     case ActionTypes.UPDATE_STATUS:
+        console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
         InvestmentCardStore
           .setStatus(action.payload)
           .emitChange();

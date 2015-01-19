@@ -27,6 +27,12 @@ var InvestmentCardActions = {
       type: ActionTypes.ADD_FUNDS,
       payload:payload
     });
+  },
+  simulateServerInvestment:function(payload){
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.ADD_FUNDS,
+      payload:payload
+    });
   }
 
 };
