@@ -27,7 +27,7 @@ var InvestmentCardStore = objectAssign({} ,EventEmitter.prototype, {
   addFunds:function(amount, source){
     _state.currentFunds = Math.min(parseInt(_state.currentFunds) + parseInt(amount), _state.fundingGoal);
     if (source === ActionsSources.SERVER_ACTION){
-      _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.OPEN)
+      if(_state.currentFunds === _state.fundingGoal) this.setStatus(CardStatus.FUNDED);
     } else {
       _state.currentUserContribution= parseInt(amount);
       // Set the status of the investment

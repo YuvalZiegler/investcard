@@ -15,7 +15,8 @@ injectTapEventPlugin();
 var App = React.createClass({
     render: function() {
         return (
-          <div id="application">
+          <div>
+
             <Cards/>
             <Controls/>
             <Notifications/>

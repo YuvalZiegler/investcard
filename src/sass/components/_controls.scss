@@ -3,7 +3,15 @@
   width:500px;
   margin:20px;
   box-shadow: 2px 3px 10px rgba($blue-grey-900,0.1);
-
+  .mui-flat-button{
+    background: $blue-grey-400;
+    color:$grey-50;
+    margin-right: 20px;
+  }
+  .mui-flat-button:hover, .mui-flat-button.mui-is-keyboard-focused{
+    background: $blue-grey-700;
+    color:$grey-50;
+  }
   header{
     float:left;
     width:100%;
@@ -21,5 +29,7 @@
     width:100%;
     padding: 13px;
   }
-
+  .mui-font-style-title{
+    padding-top: 0;
+  }
 }
