@@ -16,10 +16,6 @@ describe('InvestmentCard', function() {
     });
 
   });
-  describe('InvestmentCardString Componenet', function(){
-
-    it('it should mount with no props..');
-  })
 
 });
 

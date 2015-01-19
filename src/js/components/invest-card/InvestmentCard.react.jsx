@@ -69,6 +69,17 @@ var InvestmentCard = React.createClass({
     )
 
   },
+  renderBanner: function(){
+    var banner;
+    var p = this.props;
+    if  (p.status === CardStatus.PENDING) return;
+    if  (p.status === CardStatus.OPEN || p.status === CardStatus.INVESTED) {
+      banner = "open";
+    } else if (p.status === CardStatus.FUNDED) {
+      banner = "funded";
+    }
+    return (<div className={"zoom-in banner " + banner}>{banner}</div>)
+  },
   renderProgressBar:function(){
 
     var p = this.props;
@@ -89,6 +100,7 @@ var InvestmentCard = React.createClass({
 
     return (
       <div className={"investment-card " + p.status} key={p.id}>
+        {this.renderBanner()}
         <div className="investment-card_image-wrapper">
             <img src={p.companyLogo}/>
         </div>

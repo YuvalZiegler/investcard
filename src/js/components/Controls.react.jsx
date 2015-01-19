@@ -28,8 +28,8 @@ var Controls = React.createClass({
           <section>
             <p className="mui-font-style-title">Simulate transaction</p>
 
-            <Button label="Add investment" secondary={true} onClick={function(){actions.simulateServerInvestment(5000)}} />
-            <p className="mui-font-style-caption">Use this to simulate another person investing $5,000</p>
+            <Button label="Add investment" secondary={true} onClick={function(){actions.simulateServerInvestment(10000)}} />
+            <p className="mui-font-style-caption">Use this to simulate another person investing $10,000</p>
           </section>
         </div>
     );

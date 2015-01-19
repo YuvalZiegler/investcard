@@ -6,10 +6,31 @@ $InvestmentCardStatefulAreaHeight: 136px;
   height:642px;
   margin:20px;
   background: $grey-50;
-  box-shadow: 2px 3px 10px rgba($blue-grey-900,0.1);
-
+  box-shadow: 0 0 20px rgba($blue-grey-900,0.5);
+  transition: box-shadow .5s;
+  &.PENDING{
+    box-shadow: 0 0 5px rgba($blue-grey-900,0.2);
+  }
 }
-
+.investment-card .banner{
+  position: absolute;
+  padding: 8px 15px;
+  top: 10px;
+  right: -8px;
+  text-transform: uppercase;
+  font-size: 14px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  font-weight: 700;
+  color:$grey-50;
+  &.open{
+    transition: background, .5s;
+    background: $accent-1-color;
+  }
+  &.funded{
+    transition: background, .5s;
+    background: $accent-2-color;
+  }
+}
 .investment-card_image-wrapper{
   width:100%;
   height:225px;
