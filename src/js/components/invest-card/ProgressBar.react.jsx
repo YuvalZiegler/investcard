@@ -12,7 +12,13 @@ var ProgressBar = React.createClass({
       investors:0
     }
   },
-
+  renderComplete:function(){
+    var markup = this.props.complete + "%";
+    if(this.props.funds > 0 && this.props.funds < this.props.goal ){
+      markup += " ("+accounting.formatMoney(this.props.funds,{precision:0})+")"
+    }
+    return markup;
+  },
   render:function(){
 
     // user contribution is rendered behind the complete style so we need to adjust the width accordingly
@@ -23,7 +29,7 @@ var ProgressBar = React.createClass({
         <div className="invest-card-progress-bar-wrapper">
           <div className="invest-card-progress-bar-details-balance">
             <div className="invest-card-progress-bar-details-complete">
-              {this.props.complete + "% ("+accounting.formatMoney(this.props.funds,{precision:0})+")" }
+              {this.renderComplete() }
               <br/>
               funded by &nbsp;
               <a className="view-investors" onClick={ actions.showMessage.bind(this, "feature not implemented: will show investors list") }>

@@ -25,15 +25,24 @@ var InvestmentCardStore = objectAssign({} ,EventEmitter.prototype, {
     return _state;
   },
   addFunds:function(amount, source){
-    _state.currentFunds = Math.min(parseInt(_state.currentFunds) + parseInt(amount), _state.fundingGoal);
-    if (source === ActionsSources.SERVER_ACTION){
-      if(_state.currentFunds === _state.fundingGoal) this.setStatus(CardStatus.FUNDED);
-    } else {
-      _state.currentUserContribution= parseInt(amount);
-      // Set the status of the investment
-      _state.currentFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.INVESTED);
+    // we make sure we can't go over the limit
+    var computedFunds = Math.min(parseInt(_state.currentFunds) + parseInt(amount), _state.fundingGoal);
+    // if the card is pending or funded just return
+    if (_state.status === CardStatus.PENDING ||  _state.status === CardStatus.FUNDED){
+      return this;
     }
+    // if we reached the limit close card
+    if(computedFunds === _state.fundingGoal){
+      this.setStatus(CardStatus.FUNDED);
+    }
+    // if the user initiated investment five him credit and change the status to invested
+    if (source === ActionsSources.VIEW_ACTION){
+      _state.currentUserContribution= parseInt(amount);
+      computedFunds === _state.fundingGoal ? this.setStatus(CardStatus.FUNDED) : this.setStatus(CardStatus.INVESTED);
+    }
+    this.addInvestor();
 
+    _state.currentFunds = computedFunds;
     return this;
   },
   addInvestor:function(){
@@ -66,7 +75,6 @@ InvestmentCardStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log("❤ ︎ STORE      :: " +  payload.source + " :: " + payload.action.type);
       InvestmentCardStore
           .addFunds(action.payload, payload.source)
-          .addInvestor()
           .emitChange();
       break;
     case ActionTypes.UPDATE_STATUS:
