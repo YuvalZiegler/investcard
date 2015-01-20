@@ -5,16 +5,16 @@
 
 .fade-in {
   opacity:0;
-  -webkit-animation:fadeIn ease-in .7s;
-  -moz-animation:fadeIn ease-in .7s;
-  animation:fadeIn ease-in .7s;
+  -webkit-animation:fadeIn ease-in .5s;
+  -moz-animation:fadeIn ease-in .5s;
+  animation:fadeIn ease-in .5s;
 
   -webkit-animation-fill-mode:forwards;
   -moz-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 
-  -webkit-animation-duration:.7s;
-  -moz-animation-duration:.7s;
-  animation-duration:.7s;
+  -webkit-animation-duration:.5s;
+  -moz-animation-duration:.5s;
+  animation-duration:.5s;
 }
 

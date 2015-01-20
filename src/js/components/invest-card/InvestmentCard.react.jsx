@@ -54,11 +54,13 @@ var InvestmentCard = React.createClass({
       )
   },
   renderFundedState:function(){
-    return (<div className="investment-card-funded-state fade-in">
-      <p className="mui-font-style-body-2">funding goal reached!</p>
-      <h3 className="mui-font-style-display-2">{accounting.formatMoney(this.props.fundingGoal,{precision:0})}</h3>
-      { this.props.currentUserContribution > 0 ? this.renderUserInvestment() : null }
-    </div>);
+    return (
+        <div className="investment-card-funded-state fade-in">
+          <p className="mui-font-style-body-2">funding goal reached!</p>
+          <h3 className="mui-font-style-display-2">{accounting.formatMoney(this.props.fundingGoal,{precision:0})}</h3>
+          { this.props.currentUserContribution > 0 ? this.renderUserInvestment() : null }
+        </div>
+    );
   },
   renderUserInvestment: function(){
     return (
@@ -91,6 +93,7 @@ var InvestmentCard = React.createClass({
             complete={fundedPercentage}
             currentUserContribution={UserContributionPercentage}
             goal={p.fundingGoal}
+            funds={p.currentFunds}
         />
     )
   },
