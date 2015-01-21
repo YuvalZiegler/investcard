@@ -13,7 +13,7 @@ var InvestForm = React.createClass({
   },
   getInitialState:function(){
     return {
-      submitable:false,
+      submittable:false,
       submitted:false
     }
 
@@ -36,7 +36,7 @@ var InvestForm = React.createClass({
     // make sure we are not over the max value
     rawNumber =  Math.min(rawNumber,this.props.ceiling);
     // when the input is valid and larger than 0 we allow submissions
-    this.setState( { submitable: (rawNumber>0) } );
+    this.setState( { submittable: (rawNumber>0) } );
     // format the value and display it in the input field
     var formattedValue = rawNumber === 0 ? "$" : accounting.formatMoney(rawNumber,{precision: 0});
     this.refs.investInput.setValue(formattedValue);
@@ -54,7 +54,7 @@ var InvestForm = React.createClass({
                  onChange={this._handleInput}/>
 
           <div className="invest-button-wrapper">
-            <Button label="invest" primary={true} disabled={!this.state.submitable} />
+            <Button label="invest" primary={true} disabled={!this.state.submittable} />
           </div>
         </form>
     );
