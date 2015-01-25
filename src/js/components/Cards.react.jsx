@@ -15,7 +15,6 @@ var Cards = React.createClass({
   },
 
   render: function() {
-
     var card = this.state.card;
     return ( <InvestmentCard {...card}/> );
   },
