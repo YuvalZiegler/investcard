@@ -102,10 +102,10 @@ var InvestmentCard = React.createClass({
     var p = this.props;
 
     return (
-      <div className={"investment-card " + p.status} k
-            ey={p.id} 
-            onMouseEnter={this._onMouseEnter}
-            onMouseLeave={this._onMouseLeave}
+      <div className={"investment-card " + p.status} 
+           key={p.id} 
+           onMouseEnter={this._onMouseEnter}
+           onMouseLeave={this._onMouseEnter}
             >
         {this.renderBanner()}
         <div className="investment-card_image-wrapper">
