@@ -12,9 +12,36 @@ $InvestmentCardStatefulAreaHeight: 136px;
     box-shadow: 0 0 5px rgba($blue-grey-900,0.2);
   }
   &.OPEN:hover{
-    box-shadow: 0 0 20px rgba($blue-grey-900,0.5),
-                0 0 10px rgba($accent-1-color,1);
-              
+    box-shadow:  1px  1px 0 rgba($accent-1-color,1),
+                -1px -1px 0 rgba($accent-1-color,1),
+                 1px -1px 0 rgba($accent-1-color,1),
+                -1px  1px 0 rgba($accent-1-color,1),
+
+                 2px  2px 0 rgba($accent-1-color,1),
+                -2px -2px 0 rgba($accent-1-color,1),
+                 2px -2px 0 rgba($accent-1-color,1),
+                -2px  2px 0 rgba($accent-1-color,1),
+
+                 3px  3px 0 rgba($accent-1-color,1),
+                -3px -3px 0 rgba($accent-1-color,1),
+                 3px -3px 0 rgba($accent-1-color,1),
+                -3px  3px 0 rgba($accent-1-color,1);
+  }
+  &.FUNDED{
+    box-shadow:  1px  1px 0 rgba($accent-2-color,1),
+                -1px -1px 0 rgba($accent-2-color,1),
+                 1px -1px 0 rgba($accent-2-color,1),
+                -1px  1px 0 rgba($accent-2-color,1),
+
+                 2px  2px 0 rgba($accent-2-color,1),
+                -2px -2px 0 rgba($accent-2-color,1),
+                 2px -2px 0 rgba($accent-2-color,1),
+                -2px  2px 0 rgba($accent-2-color,1),
+
+                 3px  3px 0 rgba($accent-2-color,1),
+                -3px -3px 0 rgba($accent-2-color,1),
+                 3px -3px 0 rgba($accent-2-color,1),
+                -3px  3px 0 rgba($accent-2-color,1);
   }
 }
 
