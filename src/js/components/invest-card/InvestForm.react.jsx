@@ -9,12 +9,13 @@ var Input = mui.Input;
 var InvestForm = React.createClass({
   propTypes:{
     // we require maximum value for investment
-    ceiling:React.PropTypes.number.isRequired
+    ceiling : React.PropTypes.number.isRequired,
+    id      : React.PropTypes.number.isRequired
   },
   getInitialState:function(){
     return {
-      submittable:false,
-      submitted:false
+      submittable :false,
+      submitted   :false
     }
 
   },
@@ -24,7 +25,8 @@ var InvestForm = React.createClass({
     if (this.state.submitted) return;
     // convert the formatted value back to an integer then send the action
     var investment = accounting.unformat(this.refs.investInput.state.value);
-    Actions.addFunds(investment);
+    investment = Math.min(investment,this.props.ceiling)
+    Actions.addFunds({amount:investment,id:this.props.id});
     // set state to submitted to prevent multiple submissions
 
     this.isMounted() ? this.setState({submitted:true}) : undefined;

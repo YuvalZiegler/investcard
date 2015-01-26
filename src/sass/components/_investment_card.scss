@@ -73,6 +73,7 @@ $InvestmentCardStatefulAreaHeight: 136px;
 .investment-card_text-wrapper{
   float:left;
   padding: 0 10px;
+  width: 100%;
   h1{
     margin-bottom:0;
   }
@@ -83,6 +84,10 @@ $InvestmentCardStatefulAreaHeight: 136px;
       margin-bottom: 8px;
       letter-spacing: 0;
 
+  }
+  .companyDetails {
+    float: left;
+    min-height: 170px;
   }
 }
 

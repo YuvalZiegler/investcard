@@ -1,21 +1,28 @@
 .controls{
   float: left;
-  width:500px;
+  width:338px;
   margin:20px;
   box-shadow: 0px 0px 5px rgba($blue-grey-900,0.1);
+  
+  button.mui-flat-button.mui-is-primary.mui-enhanced-button {
+    margin-right: 0;
+    background: $accent-1-color;
+  }
   .mui-flat-button{
     background: $blue-grey-400;
     color:$grey-50;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left:10px;
   }
   .mui-flat-button:hover, .mui-flat-button.mui-is-keyboard-focused{
     background: $blue-grey-700;
     color:$grey-50;
+
   }
   header{
     float:left;
     width:100%;
-    padding:13px;
+    padding:10px;
     background: $blue-grey-800;
     h1{
       color:$grey-50;
@@ -30,6 +37,23 @@
     padding: 13px;
   }
   .mui-font-style-title{
-    padding-top: 0;
+    padding-top: 3px;
+
+  }
+  .mui-drop-down-menu {
+    position: relative;
+    display: inline-block;
+    height: 56px;
+    font-size: 15px;
+    
+    left: -10px;
+  }
+  .mui-font-style-caption{
+    font-size: 12px;
+    line-height: 20px;
+    padding-top: 13px;
+    margin-bottom: 14px;
+    letter-spacing: 0;
+    padding-left: 10px;
   }
 }

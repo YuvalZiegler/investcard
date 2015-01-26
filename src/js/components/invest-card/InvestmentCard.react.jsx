@@ -49,7 +49,7 @@ var InvestmentCard = React.createClass({
   renderOpenState:function(){
     var p = this.props;
     var calculatedCeiling = p.fundingGoal-p.currentFunds;
-    return (<InvestForm ref="investmentForm" ceiling={calculatedCeiling}/>)
+    return (<InvestForm ref="investmentForm" ceiling={calculatedCeiling} id={this.props.id}/>)
   },
   renderInvestedState:function(){
 
@@ -100,9 +100,8 @@ var InvestmentCard = React.createClass({
             complete={fundedPercentage}
             currentUserContribution={UserContributionPercentage}
             goal={p.fundingGoal}
-            funds={p.currentFunds}
-        />
-    )
+            funds={p.currentFunds}/>
+    );
   },
   // The main render function for the card
   render: function () {
@@ -119,11 +118,13 @@ var InvestmentCard = React.createClass({
             <img src={p.companyLogo}/>
         </div>
         <div className="investment-card_text-wrapper">
-            <h1 className="mui-font-style-title">
-              {p.companyTitle}
-            </h1>
-            <h2 className="mui-font-style-subhead-2">{p.companyExcerpt}</h2>
-            <p className="mui-font-style-body-1">{p.companyDescription}</p>
+            <div className="companyDetails">
+              <h1 className="mui-font-style-title">
+                {p.companyTitle}
+              </h1>
+              <h2 className="mui-font-style-subhead-2">{p.companyExcerpt}</h2>
+              <p className="mui-font-style-body-1">{p.companyDescription}</p>
+            </div>
             {
                 (p.status === CardStatus.PENDING) ? this.renderPendingState() :
                 (p.status === CardStatus.OPEN) ? this.renderOpenState() :

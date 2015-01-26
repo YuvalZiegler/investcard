@@ -5,18 +5,22 @@ var InvestmentCard      = require('./invest-card/InvestmentCard.react.jsx');
 var React               = require('react');
 
 function getStateFromStores() {
-  return { card: InvestmentCardStore.getState() };
+  return  InvestmentCardStore.getState();
 }
 
 var Cards = React.createClass({
 
   getInitialState:function(){
-    return {  }
+    return { cards:[] }
   },
 
   render: function() {
-    var card = this.state.card;
-    return ( <InvestmentCard {...card}/> );
+
+    return (
+        <div className="cards">
+        {this.state.cards.map( function(card, index){ return <InvestmentCard key={index} {...card} /> } )}
+       </div>
+    );
   },
 
   componentDidMount: function () {
