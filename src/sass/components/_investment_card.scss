@@ -11,7 +11,13 @@ $InvestmentCardStatefulAreaHeight: 136px;
   &.PENDING{
     box-shadow: 0 0 5px rgba($blue-grey-900,0.2);
   }
+  &.OPEN:hover{
+    box-shadow: 0 0 20px rgba($blue-grey-900,0.5),
+                0 0 10px rgba($accent-1-color,1);
+              
+  }
 }
+
 .investment-card .banner{
   position: absolute;
   padding: 8px 15px;
@@ -125,6 +131,8 @@ $InvestmentCardStatefulAreaHeight: 136px;
   h3{ margin-bottom:0;}
   h4{color:$accent-1-color;}
 }
+
+
 .investment-card-funded-state{
   opacity: 0;
   transition: opacity, 1s;
@@ -182,5 +190,11 @@ $InvestmentCardStatefulAreaHeight: 136px;
   float:left;
   @extend %mui-font-style-caption;
   text-align: right;
+}
+
+.investment-card.OPEN:hover{
+  & .invest-form .mui-input input ~ .mui-input-placeholder{
+    color:$accent-1-color;
+  }
 }
 
