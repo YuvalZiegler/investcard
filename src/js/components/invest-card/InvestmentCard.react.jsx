@@ -5,9 +5,10 @@ var CardStatus = require('../../constants/AppConstants').CardStatus;
 var accounting = require('accounting');
 var actions = require('../../actions/NotificationActions');
 var IconButton = require('material-ui').IconButton;
-
+var throttleTimeout;
 var InvestmentCard = React.createClass({
   // A list of properties we expect and their types
+
   propTypes:{
     id: React.PropTypes.number,
     companyTitle: React.PropTypes.string,
@@ -105,7 +106,7 @@ var InvestmentCard = React.createClass({
       <div className={"investment-card " + p.status} 
            key={p.id} 
            onMouseEnter={this._onMouseEnter}
-           onMouseLeave={this._onMouseEnter}
+           onMouseLeave={this._onMouseLeave}
             >
         {this.renderBanner()}
         <div className="investment-card_image-wrapper">
@@ -129,12 +130,18 @@ var InvestmentCard = React.createClass({
     )
   },
   _onMouseEnter:function(){
+    // return early if card is not in the open state
     if(this.props.status !==CardStatus.OPEN) return;
-    this.refs.investmentForm.refs.investInput.focus();
+    // do not focus unless mouse stays on card
+    throttleTimeout = setTimeout(function(){
+       this.refs.investmentForm.refs.investInput.focus();
+     }.bind(this),250);
+   
   },
   _onMouseLeave:function(){
     if(this.props.status !==CardStatus.OPEN) return;
-    this.refs.investmentForm.refs.investInput.blur();
+    clearTimeout(throttleTimeout);
+    // this.refs.investmentForm.refs.investInput.blur();
   }
 });
 
