@@ -20,7 +20,7 @@ module.exports = {
   }),
 
   CardStatus: keyMirror({
-    PENDING:null, OPEN:null, INVESTED:null, FUNDED:null
+    LOADING:null, PENDING:null, OPEN:null, INVESTED:null, FUNDED:null
   })
 
 };

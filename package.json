@@ -38,6 +38,7 @@
     "gulp-sass": "^1.1.0",
     "gulp-sourcemaps": "^1.2.8",
     "gulp-util": "^3.0.1",
+    "jest-cli": "^0.2.1",
     "mocha": "^2.0.1",
     "mocha-notifier-reporter": "^0.1.0",
     "mocha-phantomjs": "^3.5.2",
@@ -69,6 +70,7 @@
       "envify"
     ]
   },
+
   "browserify-shim": {
     "plugin": {
       "exports": "plugin",

@@ -10,13 +10,13 @@ var InvestmentCard = React.createClass({
   // A list of properties we expect and their types
 
   propTypes:{
-    id: React.PropTypes.number,
+    id: React.PropTypes.number.isRequired,
     companyTitle: React.PropTypes.string,
     companyLogo: React.PropTypes.string,
     companyExcerpt:React.PropTypes.string,
     companyDescription: React.PropTypes.string,
     status: React.PropTypes.oneOf([
-      CardStatus.PENDING, CardStatus.OPEN, CardStatus.INVESTED, CardStatus.FUNDED
+      CardStatus.LOADING, CardStatus.PENDING, CardStatus.OPEN, CardStatus.INVESTED, CardStatus.FUNDED
     ]),
     fundingGoal:React.PropTypes.number,
     currentFunds:React.PropTypes.number,
@@ -24,6 +24,12 @@ var InvestmentCard = React.createClass({
     investors:React.PropTypes.number,
     fundingStart:React.PropTypes.string,
     timeFromNow:React.PropTypes.string
+  },
+  getDefaultProps:function(){
+    return {
+      status: CardStatus.LOADING,
+      id:-1
+    }
   },
   // render functions for various states of the card
   renderPendingState:function(){
@@ -75,7 +81,7 @@ var InvestmentCard = React.createClass({
   renderBanner: function(){
     var banner;
     var p = this.props;
-    if  (p.status === CardStatus.PENDING) return;
+    if  (p.status === CardStatus.PENDING || this.props.status === CardStatus.LOADING) return;
     if  (p.status === CardStatus.OPEN || p.status === CardStatus.INVESTED) {
       banner = "open";
     } else if (p.status === CardStatus.FUNDED) {
@@ -124,7 +130,8 @@ var InvestmentCard = React.createClass({
                 (p.status === CardStatus.INVESTED) ? this.renderInvestedState() :
                 (p.status === CardStatus.FUNDED) ? this.renderFundedState() : null
             }
-            { this.props.status !== CardStatus.PENDING ? this.renderProgressBar() : null }
+            { this.props.status !== CardStatus.PENDING &&
+              this.props.status !== CardStatus.LOADING  ? this.renderProgressBar() : null }
          </div>
       </div>
     )
