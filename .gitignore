@@ -9,3 +9,4 @@ node_modules/*
 logs
 *.log
 npm-debug.log
+tests/test-bundle.js
