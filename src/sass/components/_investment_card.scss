@@ -192,9 +192,3 @@ $InvestmentCardStatefulAreaHeight: 136px;
   text-align: right;
 }
 
-.investment-card.OPEN:hover{
-  & .invest-form .mui-input input ~ .mui-input-placeholder{
-    color:$accent-1-color;
-  }
-}
-

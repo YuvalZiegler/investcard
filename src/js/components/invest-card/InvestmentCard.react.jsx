@@ -42,7 +42,7 @@ var InvestmentCard = React.createClass({
   renderOpenState:function(){
     var p = this.props;
     var calculatedCeiling = p.fundingGoal-p.currentFunds;
-    return (<InvestForm ceiling={calculatedCeiling}/>)
+    return (<InvestForm ref="investmentForm" ceiling={calculatedCeiling}/>)
   },
   renderInvestedState:function(){
 
@@ -102,7 +102,11 @@ var InvestmentCard = React.createClass({
     var p = this.props;
 
     return (
-      <div className={"investment-card " + p.status} key={p.id}>
+      <div className={"investment-card " + p.status} k
+            ey={p.id} 
+            onMouseEnter={this._onMouseEnter}
+            onMouseLeave={this._onMouseLeave}
+            >
         {this.renderBanner()}
         <div className="investment-card_image-wrapper">
             <img src={p.companyLogo}/>
@@ -123,8 +127,15 @@ var InvestmentCard = React.createClass({
          </div>
       </div>
     )
+  },
+  _onMouseEnter:function(){
+    if(this.props.status !==CardStatus.OPEN) return;
+    this.refs.investmentForm.refs.investInput.focus();
+  },
+  _onMouseLeave:function(){
+    if(this.props.status !==CardStatus.OPEN) return;
+    this.refs.investmentForm.refs.investInput.blur();
   }
-
 });
 
 module.exports = InvestmentCard;
