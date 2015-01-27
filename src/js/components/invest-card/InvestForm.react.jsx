@@ -15,7 +15,7 @@ var InvestForm = React.createClass({
   getInitialState:function(){
     return {
       submittable :false,
-      submitted   :false
+      submitted   :false,
     }
 
   },

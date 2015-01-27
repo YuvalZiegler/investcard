@@ -5,6 +5,7 @@
   "main": "./src/js/app.jsx",
   "dependencies": {
     "accounting": "^0.4.1",
+    "express": "^4.10.2",
     "flux": "^2.0.1",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1",

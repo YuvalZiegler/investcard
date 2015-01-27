@@ -34,7 +34,7 @@ let cards = [
             id:3,
             companyTitle:"Saul Goodman & Associates",
             companyExcerpt: "Better Call Saul!",
-            companyDescription: "We practice law, practice makes perfect.",
+            companyDescription: "Criminal attorney, holds a Master of Arts degree in Political Science from the University of American Samoa.",
             companyLogo: "./images/tech3.jpeg",
             fundingGoal:200000,
             fundingStart: "Jan 17, 2015",

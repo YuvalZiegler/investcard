@@ -5,6 +5,7 @@ var CardStatus = require('../../constants/AppConstants').CardStatus;
 var accounting = require('accounting');
 var actions = require('../../actions/NotificationActions');
 var IconButton = require('material-ui').IconButton;
+var elementIsInViewport = require('../../utilities/DOMUtilities').isInViewport;
 var throttleTimeout;
 var InvestmentCard = React.createClass({
   // A list of properties we expect and their types
@@ -137,12 +138,17 @@ var InvestmentCard = React.createClass({
       </div>
     )
   },
+  _elementIsInViewport:elementIsInViewport,
   _onMouseEnter:function(){
     // return early if card is not in the open state
     if(this.props.status !==CardStatus.OPEN) return;
     // do not focus unless mouse stays on card
     throttleTimeout = setTimeout(function(){
-       this.refs.investmentForm.refs.investInput.focus();
+      // check if the form is in the view to prevent the browser scrolling to a new position
+      var form  = this.refs.investmentForm;
+      if(this._elementIsInViewport(form.getDOMNode())){
+        form.refs.investInput.focus();
+      }
      }.bind(this),250);
    
   },
