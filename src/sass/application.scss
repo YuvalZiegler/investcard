@@ -20,15 +20,15 @@ body{
 }
 
 section.text-block{
-    float:left;
+    float: right;
     margin: 20px;
-    padding:0 20px 20px;
-    background: $grey-50;
-    width: 980px;
+    padding: 0 20px 20px;
+    background: #fafafa;
+    width: 47%;
 }
 
 
-#application{ float:left; width:100%; margin-bottom:40px;}
+#application{ float:left; width:100%;}
 a{ color:$accent-1-color}
 a:hover{ color:$accent-3-color}
 //////////////
