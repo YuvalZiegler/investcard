@@ -1,7 +1,7 @@
 'use strict';
 
 
-let cards = [
+var cards = [
       {
             id:1,
             companyTitle:"Los Pollos Hermanos",
